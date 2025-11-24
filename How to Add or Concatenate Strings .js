@@ -5,7 +5,7 @@
 
 var fName = "Masfi";
 var lName = "Rahman";
-
+//Some Examlpe of Add or Concatenate Strings
 // adding multiple strings here
 var fullName = fName + " " + lName;
 console.log(fullName);
