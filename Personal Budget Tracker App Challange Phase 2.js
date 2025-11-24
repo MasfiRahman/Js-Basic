@@ -15,9 +15,12 @@ Format the output neatly.
 */
 
 // Declare variables
-let userName/*(Convension casing)*/ = 'Masfi Rahman'; // String//My User's name
-let income = 3750.25; // Number//My income
-let expenses = 2580.0; // Number//My expense
+//let userName/*(Convension casing)*/ = 'Masfi Rahman'; // String//My User's name
+//let income = 3750.25; // Number//My income
+//let expenses = 2580.0; // Number//My expense
+const userName/*(Convension casing)*/ = 'Masfi Rahman';// String//My User's name
+const income = 3750.25;//My income
+const expenses = 2580.0;//My expense
 
 // Display the budget details in console
 console.log('📊 Personal Budget Tracker');
