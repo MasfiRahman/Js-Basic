@@ -11,6 +11,6 @@ explain with comment.
 
 // solution of Challenge 1
 console.log('Personal Budget Tracker App');
-console.log('Masfi Rahman');
-console.log('3750.25');//My income
-console.log('2580.0');//My expense
+console.log('Masfi Rahman'); //String//My User's name
+console.log('3750.25');//My income// Number
+console.log('2580.0');//My expense // Number
