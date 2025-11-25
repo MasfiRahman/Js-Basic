@@ -17,3 +17,6 @@ document.write("Length of full name : " + fullName.length + "<br/>");
 
 //printing the full name in uppercase
 document.write("Uppercase Full name : " + fullName.toUpperCase());
+
+//add without using Library Functions
+//print the 2nd position of fullName
