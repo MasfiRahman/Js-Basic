@@ -67,4 +67,4 @@ console.log(`📉 Tax Deducted (10%): $ ${tax}`);
 console.log(`💲 Net Income After Tax: $ ${netIcome}`);
 console.log(`🟢 Remaining Balance: $ ${balance} (in 2024)`);
 console.log(`💾 Savings (20% of balance): $ ${savings}`);
-cosole.log(`hi  bye`);
+console.log(`hi  bye`);
