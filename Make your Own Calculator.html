@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple Calculator</title>
+</head>
+<body>
+    <script>
+        //var num1 = 20;//Frequently Declare
+        //var num2 = 10;//Frequently Declare
+   
+        var num1 = parseInt(prompt("Enter the First Number : "));//Direct User input and direct Converting to Integer
+        var num2 = parseInt(prompt("Enter the bSecond Number : "));//Direct User input and direct Converting to Integer
+        
+         var num1 = parseFloat(prompt("Enter the First Number : "));//Direct User input and direct Converting to Float
+         var num2 = parseFloat(prompt("Enter the Second Number : "));//Direct User input and direct Converting to Float
+
+        num1=parseInt(num1,10);//Converting into variable declaring and in function which variable ,Decimal number as an Integer number
+        num2=parseInt(num2,10);//Converting into variable declaring and in function which variable ,Decimal number as an Integer Number
+
+        num1=parseFloat(num1,10);//Converting into variable declaring and in function which variable ,Decimal number as an Float number
+        num2=parseFloat(num2,10);//Converting into variable declaring and in function which variable ,Decimal number as an Float number
+
+        var sub,sum;
+
+        sum = num1+num2;
+        document.write("Addition = "+sum+"<br/>");
+        
+        document.write(num1+ " + " +num2+ " = " +sum+"<br/>");
+        document.write(num1+" - "+num2+" = "+sum);
+
+
+
+
+        sub = num1-num2;
+        document.write("Subtraction = "+sub);
+         
+
+
+    </script>
+</body>
+</html>
