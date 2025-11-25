@@ -34,7 +34,7 @@ else
     console.log("large Number : "+num3);
 
 
-//Vowel and Consonent
+//Vowel and Consonent Using LOgical && and || operator
 
 var letter1 = prompt("Enter a letter : ");
 
