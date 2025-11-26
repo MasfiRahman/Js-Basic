@@ -20,3 +20,8 @@ console.log(add(25, 20));
 console.log(sub(25, 20));
 console.log(mul(25, 20));
 console.log(div(25, 20));
+
+//Create an IIFEs that print sum of 2 numbers
+(function (a, b) {
+  console.log("The sum of " + a + " and " + b + " is: " + (a + b));
+})(10, 15);
