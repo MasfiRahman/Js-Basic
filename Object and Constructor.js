@@ -68,6 +68,10 @@ console.log(s1);
 console.log(s2);
 console.log(s3);
 
+s1.display();
+s2.display();
+s3.display();
+
 
 
 // object in js
