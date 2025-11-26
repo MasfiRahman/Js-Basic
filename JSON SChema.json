@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/friends-schema.json",
+  "title": "Friends Data Schema",
+  "description": "Schema for validating friends data",
+  "type": "object",
+  "properties": {
+    "friends": {
+      "type": "array",
+      "description": "Array of friend objects",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Friend's name",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "age": {
+            "type": "integer",
+            "description": "Friend's age",
+            "minimum": 0,
+            "maximum": 150
+          }
+        },
+        "required": ["name", "age"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["friends"],
+  "additionalProperties": false
+}
+
+
+Common JSON Schema Keywords
+Keyword	Purpose	Example
+type	Data type	"type": "string"
+required	Required fields	"required": ["name", "age"]
+properties	Object properties	Defines structure
+minLength/maxLength	String length	"minLength": 1
+minimum/maximum	Number range	"minimum": 0
+pattern	Regex pattern	"pattern": "^[A-Za-z]+$"
+format	Data format	"format": "email"
+items	Array items schema	Defines array elements
+additionalProperties	Allow extra props	false to restrict
