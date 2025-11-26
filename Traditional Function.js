@@ -48,3 +48,51 @@ function subtraction(x,y){
 }
 subtraction(99,100);
 subtraction(80,40);
+
+
+//Multiply function
+function multiply(x,y){
+    var result = x*y;
+    console.log("Multiplication = "+result);
+}
+multiply(5,4);
+multiply(20,6);
+
+
+//Divide function
+function divide(x,y){
+    var result = x/y;
+    console.log("Division = "+result);
+}
+divide(20,4);
+divide(90,3);
+
+// Function example
+
+// creating function without parameter
+function message() {
+    document.write("Hello, I am a function without parameter" + "<br/>");
+}
+
+// creating function with one parameter
+function welcomeMessage(name) {
+    document.write("welcome " + name + "<br/>");
+}
+
+// creating function with multiple parameters
+function addition(num1, num2) {
+    var sum = num1 + num2;
+    document.write("addition is  " + sum + "<br/>");
+}
+
+// returning from a function
+function square(num) {
+    return num * num;
+}
+
+
+//calling functions
+message();
+welcomeMessage("Masfi Rahman");
+addition(2, 3);
+document.write("square of 5 is  " + square(5) + "<br/>");
