@@ -1,0 +1,33 @@
+const data = require("./friends.json");
+console.clear();
+
+// Accessing JSON Data
+// console.log(data);
+// console.log(data.friends[0]);
+// console.log(data.friends[0].name);
+
+// Modify JSON Data
+// data.friends[0].age = 35;
+// console.log(data.friends[0]);
+
+// delete JSON data
+// delete data.friends[0].age;
+// console.log(data.friends[0]);
+
+// conversion between js and json
+// JSON - JavaScript Object Notation, test.json
+// You should already know the syntax -> {"key":"key_value"}
+// JSON Receives Boolean, Number, String, Array, Object
+// JSON.stringify() -> converts a JavaScript object or value to a JSON string
+// JSON.parse(JSONDATA) -> converts a JSON string to  a JavaScript object or value
+
+const studentInfo = {
+  id: 23101182,
+  name: "Masfi Rahman",
+  gpa: 2.94,
+};
+const studentInfoJSON = JSON.stringify(studentInfo);
+console.log(studentInfoJSON);
+
+const studentInfoJSObject = JSON.parse(studentInfoJSON);
+console.log(studentInfoJSObject);
