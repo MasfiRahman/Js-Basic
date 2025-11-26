@@ -1,0 +1,44 @@
+const Ajv = require('ajv');
+const ajv = new Ajv();
+
+// Define validation schema
+const friendsSchema = {
+    type: "object",
+    properties: {
+        friends: {
+            type: "array",
+            items: {
+                type: "object",
+                properties: {
+                    name: { type: "string" },
+                    age: { type: "number", minimum: 0 }
+                },
+                required: ["name", "age"],
+                additionalProperties: false
+            }
+        }
+    },
+    required: ["friends"]
+};
+
+// Create validator
+const validate = ajv.compile(friendsSchema);
+
+// Test validation
+const testData = {
+    "friends": [{
+            "name": "Anar",
+            "age": 25
+        },
+        {
+            "name": "Ruhul",
+            "age": 28
+        }
+    ]
+};
+
+const isValid = validate(testData);
+console.log("Is valid:", isValid);
+if (!isValid) {
+    console.log("Errors:", validate.errors);
+}
