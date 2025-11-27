@@ -3,7 +3,6 @@
 // document.getElementsByClassName()
 // document.querySelector()
 
-
 document.getElementById("pid").innerHTML="This is changed";
 document.querySelector("#pid").innerHTML="this is football";//Using Query Selector by (#)id
 document.querySelector(".pclass").innerHTML="Oh! it's really too much hard";//Using Query Selector by (.)class
@@ -15,8 +14,6 @@ document.querySelectorAll("p");//Showing NodeList in console mode
 document.querySelectorAll("p").innerHTML="This is text";
 document.querySelectorAll("p")[0].innerHTML="This rediculus";
 document.querySelectorAll("p")[1].innerHTML="This Good";//Changing element at index 1 using querySelectorAll
-
-
 
 // finding element by querySelector
 var q1 = document.querySelector("#heading2");
