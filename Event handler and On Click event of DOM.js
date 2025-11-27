@@ -1,13 +1,13 @@
-/*function myMesseage1(){
+function myMesseage1(){
             alert('I am a Button 1');
         }
-*/
-/*function myMesseage2(){
+
+function myMesseage2(){
             alert('I am a Button 2');
-} */       
-/*function myMesseage3(){
+}        
+function myMesseage3(){
             alert('I am a Paragraph');
-}*/
+}
 function myMesseage1(){
             document.querySelector("#para1").innerHTML = "I am a Button 1";
         }
