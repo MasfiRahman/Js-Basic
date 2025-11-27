@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation & Traversal Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            text-align: center;
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .demo-area {
+            border: 2px dashed #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            min-height: 150px;
+        }
+        
+        .demo-element {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .highlight {
+            background-color: #ffeaa7;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .tree-structure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .tree-node {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .tree-connector {
+            width: 2px;
+            height: 20px;
+            background-color: #7f8c8d;
+            margin: 0 auto;
+        }
+        
+        .tree-children {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .selected {
+            background-color: #e74c3c !important;
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+        
+        .parent-highlight {
+            background-color: #9b59b6 !important;
+        }
+        
+        .sibling-highlight {
+            background-color: #f39c12 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DOM Manipulation & Traversal Guide</h1>
+        
+        <!-- DOM Tree Structure Section -->
+        <div class="section" style="grid-column: 1 / -1;">
+            <h2>DOM Tree Structure</h2>
+            <p>The Document Object Model (DOM) represents HTML and XML documents as a tree structure where each node is an object representing a part of the document.</p>
+            
+            <div class="tree-structure">
+                <div class="tree-node">document (Root)</div>
+                <div class="tree-connector"></div>
+                <div class="tree-node">html</div>
+                <div class="tree-connector"></div>
+                <div class="tree-children">
+                    <div>
+                        <div class="tree-node">head</div>
+                        <div class="tree-connector"></div>
+                        <div class="tree-children">
+                            <div class="tree-node">title</div>
+                            <div class="tree-node">meta</div>
+                            <div class="tree-node">style</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tree-node">body</div>
+                        <div class="tree-connector"></div>
+                        <div class="tree-children">
+                            <div class="tree-node">h1</div>
+                            <div class="tree-node">div</div>
+                            <div class="tree-node">p</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DOM Selection Methods Section -->
+        <div class="section">
+            <h2>DOM Selection Methods</h2>
+            <p>These methods allow you to select elements from the DOM tree.</p>
+            
+            <h3>1. getElementById()</h3>
+            <p>Selects an element by its ID attribute.</p>
+            <div class="code-block">document.getElementById('myElement');</div>
+            
+            <h3>2. getElementsByClassName()</h3>
+            <p>Selects all elements with a specific class name.</p>
+            <div class="code-block">document.getElementsByClassName('myClass');</div>
+            
+            <h3>3. getElementsByTagName()</h3>
+            <p>Selects all elements with a specific tag name.</p>
+            <div class="code-block">document.getElementsByTagName('div');</div>
+            
+            <h3>4. querySelector()</h3>
+            <p>Selects the first element that matches a CSS selector.</p>
+            <div class="code-block">document.querySelector('#myId .myClass');</div>
+            
+            <h3>5. querySelectorAll()</h3>
+            <p>Selects all elements that match a CSS selector.</p>
+            <div class="code-block">document.querySelectorAll('div.myClass');</div>
+            
+            <div class="demo-area" id="selectionDemo">
+                <div class="demo-element" id="element1">Element 1 (ID)</div>
+                <div class="demo-element my-class">Element 2 (Class)</div>
+                <div class="demo-element my-class">Element 3 (Class)</div>
+                <div class="demo-element">Element 4 (Tag)</div>
+                <div class="demo-element" data-attr="special">Element 5 (Attribute)</div>
+            </div>
+            
+            <button onclick="selectById()">Select by ID</button>
+            <button onclick="selectByClass()">Select by Class</button>
+            <button onclick="selectByTag()">Select by Tag</button>
+            <button onclick="selectByQuery()">Select by Query</button>
+            <button onclick="clearSelection()">Clear Selection</button>
+        </div>
+        
+        <!-- DOM Traversal Section -->
+        <div class="section">
+            <h2>DOM Traversal</h2>
+            <p>Traversal means moving through the DOM tree to select elements relative to other elements.</p>
+            
+            <h3>1. Downwards Traversal</h3>
+            <p>Moving from parent to child elements.</p>
+            <div class="code-block">
+                // Using querySelector/querySelectorAll<br>
+                parent.querySelector('.child');<br><br>
+                
+                // Using children property<br>
+                parent.children;
+            </div>
+            
+            <h3>2. Upwards Traversal</h3>
+            <p>Moving from child to parent elements.</p>
+            <div class="code-block">
+                // Using parentElement<br>
+                child.parentElement;
+            </div>
+            
+            <h3>3. Sideways Traversal</h3>
+            <p>Moving between sibling elements.</p>
+            <div class="code-block">
+                // Using nextElementSibling and previousElementSibling<br>
+                element.nextElementSibling;<br>
+                element.previousElementSibling;<br><br>
+                
+                // Using parentElement + children + index<br>
+                parent.children[index];
+            </div>
+            
+            <div class="demo-area" id="traversalDemo">
+                <div class="demo-element" id="parentElement">
+                    Parent Element
+                    <div class="demo-element" id="child1">Child 1</div>
+                    <div class="demo-element" id="child2">Child 2</div>
+                    <div class="demo-element" id="child3">Child 3</div>
+                </div>
+                <div class="demo-element" id="sibling1">Sibling 1</div>
+                <div class="demo-element" id="sibling2">Sibling 2</div>
+                <div class="demo-element" id="sibling3">Sibling 3</div>
+            </div>
+            
+            <button onclick="traverseDown()">Traverse Down (Children)</button>
+            <button onclick="traverseUp()">Traverse Up (Parent)</button>
+            <button onclick="traverseSide()">Traverse Side (Siblings)</button>
+            <button onclick="clearTraversal()">Clear Traversal</button>
+        </div>
+        
+        <!-- DOM Manipulation Section -->
+        <div class="section">
+            <h2>DOM Manipulation</h2>
+            <p>Creating, inserting, and removing elements from the DOM.</p>
+            
+            <h3>Creating Elements</h3>
+            <div class="code-block">
+                // Create a new element<br>
+                const newElement = document.createElement('div');<br>
+                newElement.textContent = 'New Element';<br>
+                newElement.className = 'demo-element';
+            </div>
+            
+            <h3>Inserting Elements</h3>
+            <div class="code-block">
+                // Append as last child<br>
+                parent.appendChild(newElement);<br><br>
+                
+                // Insert before another element<br>
+                parent.insertBefore(newElement, referenceElement);<br><br>
+                
+                // Prepend as first child<br>
+                parent.prepend(newElement);
+            </div>
+            
+            <h3>Removing Elements</h3>
+            <div class="code-block">
+                // Remove an element<br>
+                element.remove();<br><br>
+                
+                // Remove a child element<br>
+                parent.removeChild(childElement);
+            </div>
+            
+            <div class="demo-area" id="manipulationDemo">
+                <div class="demo-element">Existing Element 1</div>
+                <div class="demo-element">Existing Element 2</div>
+            </div>
+            
+            <button onclick="createElement()">Create Element</button>
+            <button onclick="insertElement()">Insert Element</button>
+            <button onclick="removeElement()">Remove Element</button>
+            <button onclick="resetManipulation()">Reset</button>
+        </div>
+        
+        <!-- Practical Example Section -->
+        <div class="section">
+            <h2>Practical Example: Dynamic List</h2>
+            <p>This example combines selection, traversal, and manipulation to create an interactive list.</p>
+            
+            <div class="demo-area">
+                <input type="text" id="itemInput" placeholder="Enter a new item">
+                <button onclick="addListItem()">Add Item</button>
+                <ul id="itemList">
+                    <li>Item 1 <button onclick="removeListItem(this)">Remove</button></li>
+                    <li>Item 2 <button onclick="removeListItem(this)">Remove</button></li>
+                    <li>Item 3 <button onclick="removeListItem(this)">Remove</button></li>
+                </ul>
+            </div>
+            
+            <div class="code-block">
+                function addListItem() {<br>
+                &nbsp;&nbsp;const input = document.getElementById('itemInput');<br>
+                &nbsp;&nbsp;const list = document.getElementById('itemList');<br>
+                &nbsp;&nbsp;if (input.value) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;const newItem = document.createElement('li');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;newItem.textContent = input.value + ' ';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;const removeBtn = document.createElement('button');<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;removeBtn.textContent = 'Remove';<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;removeBtn.onclick = function() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.parentElement.remove();<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;};<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;newItem.appendChild(removeBtn);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;list.appendChild(newItem);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;input.value = '';<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Selection Methods Demo
+        function selectById() {
+            clearSelection();
+            const element = document.getElementById('element1');
+            element.classList.add('selected');
+        }
+        
+        function selectByClass() {
+            clearSelection();
+            const elements = document.getElementsByClassName('my-class');
+            for (let element of elements) {
+                element.classList.add('selected');
+            }
+        }
+        
+        function selectByTag() {
+            clearSelection();
+            const elements = document.getElementsByTagName('div');
+            for (let element of elements) {
+                if (element.parentElement.id === 'selectionDemo') {
+                    element.classList.add('selected');
+                }
+            }
+        }
+        
+        function selectByQuery() {
+            clearSelection();
+            const element = document.querySelector('[data-attr="special"]');
+            element.classList.add('selected');
+        }
+        
+        function clearSelection() {
+            const elements = document.querySelectorAll('#selectionDemo .demo-element');
+            for (let element of elements) {
+                element.classList.remove('selected');
+            }
+        }
+        
+        // Traversal Demo
+        function traverseDown() {
+            clearTraversal();
+            const parent = document.getElementById('parentElement');
+            parent.classList.add('parent-highlight');
+            
+            const children = parent.children;
+            for (let child of children) {
+                child.classList.add('selected');
+            }
+        }
+        
+        function traverseUp() {
+            clearTraversal();
+            const child = document.getElementById('child2');
+            child.classList.add('selected');
+            
+            const parent = child.parentElement;
+            parent.classList.add('parent-highlight');
+        }
+        
+        function traverseSide() {
+            clearTraversal();
+            const child = document.getElementById('child2');
+            child.classList.add('selected');
+            
+            const nextSibling = child.nextElementSibling;
+            const prevSibling = child.previousElementSibling;
+            
+            if (nextSibling) nextSibling.classList.add('sibling-highlight');
+            if (prevSibling) prevSibling.classList.add('sibling-highlight');
+        }
+        
+        function clearTraversal() {
+            const elements = document.querySelectorAll('#traversalDemo .demo-element');
+            for (let element of elements) {
+                element.classList.remove('selected', 'parent-highlight', 'sibling-highlight');
+            }
+        }
+        
+        // Manipulation Demo
+        let elementCount = 3;
+        
+        function createElement() {
+            const newElement = document.createElement('div');
+            newElement.className = 'demo-element';
+            newElement.textContent = `New Element ${++elementCount}`;
+            newElement.id = `newElement${elementCount}`;
+            
+            document.getElementById('manipulationDemo').appendChild(newElement);
+        }
+        
+        function insertElement() {
+            const newElement = document.createElement('div');
+            newElement.className = 'demo-element';
+            newElement.textContent = `Inserted Element ${++elementCount}`;
+            newElement.id = `newElement${elementCount}`;
+            
+            const demoArea = document.getElementById('manipulationDemo');
+            if (demoArea.children.length > 1) {
+                demoArea.insertBefore(newElement, demoArea.children[1]);
+            } else {
+                demoArea.appendChild(newElement);
+            }
+        }
+        
+        function removeElement() {
+            const demoArea = document.getElementById('manipulationDemo');
+            if (demoArea.children.length > 2) {
+                demoArea.removeChild(demoArea.lastChild);
+            }
+        }
+        
+        function resetManipulation() {
+            const demoArea = document.getElementById('manipulationDemo');
+            demoArea.innerHTML = '<div class="demo-element">Existing Element 1</div><div class="demo-element">Existing Element 2</div>';
+            elementCount = 2;
+        }
+        
+        // Practical Example Functions
+        function addListItem() {
+            const input = document.getElementById('itemInput');
+            const list = document.getElementById('itemList');
+            
+            if (input.value.trim()) {
+                const newItem = document.createElement('li');
+                newItem.textContent = input.value + ' ';
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                
+                newItem.appendChild(removeBtn);
+                list.appendChild(newItem);
+                input.value = '';
+            }
+        }
+        
+        function removeListItem(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
