@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events Master - Load, Scroll, Resize, Toggle</title>
+    <link rel="stylesheet" href="Load,Unoad,Toggle,resize,Scroll event 4 of DOM.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎯 DOM Events Master</h1>
+            <p>Load, Unload, Scroll, Resize & Toggle Events</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="load">📥 Load/Unload</button>
+            <button class="tab-btn" data-tab="scroll">📜 Scroll</button>
+            <button class="tab-btn" data-tab="resize">📱 Resize</button>
+            <button class="tab-btn" data-tab="toggle">🔀 Toggle</button>
+            <button class="tab-btn" data-tab="events">📊 All Events</button>
+        </nav>
+
+        <!-- Load/Unload Section -->
+        <section class="tab-content active" id="load">
+            <div class="section-header">
+                <h2>📥 Load & Unload Events</h2>
+                <p>Page lifecycle events</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="demo-card">
+                    <h3>Window Load Event</h3>
+                    <p>Fires when the entire page has loaded</p>
+                    <div class="status-box">
+                        <div class="status" id="loadStatus">Waiting for load...</div>
+                    </div>
+                    <button class="action-btn" id="simulateLoad">
+                        <i class="fas fa-sync"></i> Simulate Load
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h3>BeforeUnload Event</h3>
+                    <p>Fires when the page is about to unload</p>
+                    <div class="status-box">
+                        <div class="status" id="unloadStatus">Ready</div>
+                    </div>
+                    <button class="action-btn" id="simulateUnload">
+                        <i class="fas fa-sign-out-alt"></i> Simulate Unload
+                    </button>
+                </div>
+
+                <div class="demo-card">
+                    <h3>DOMContentLoaded</h3>
+                    <p>Fires when initial HTML is parsed</p>
+                    <div class="status-box">
+                        <div class="status" id="domContentStatus">Waiting...</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="domProgress"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll Section -->
+        <section class="tab-content" id="scroll">
+            <div class="section-header">
+                <h2>📜 Scroll Events</h2>
+                <p>Track scrolling behavior</p>
+            </div>
+
+            <div class="scroll-container">
+                <div class="scroll-content" id="scrollContent">
+                    <div class="scroll-item" data-section="1">
+                        <h3>Section 1</h3>
+                        <p>Start scrolling to see events...</p>
+                    </div>
+                    <div class="scroll-item" data-section="2">
+                        <h3>Section 2</h3>
+                        <p>Keep scrolling...</p>
+                    </div>
+                    <div class="scroll-item" data-section="3">
+                        <h3>Section 3</h3>
+                        <p>Halfway there!</p>
+                    </div>
+                    <div class="scroll-item" data-section="4">
+                        <h3>Section 4</h3>
+                        <p>Almost at the end...</p>
+                    </div>
+                    <div class="scroll-item" data-section="5">
+                        <h3>Section 5</h3>
+                        <p>You made it to the bottom! 🎉</p>
+                    </div>
+                </div>
+
+                <div class="scroll-indicators">
+                    <div class="indicator active" data-section="1">1</div>
+                    <div class="indicator" data-section="2">2</div>
+                    <div class="indicator" data-section="3">3</div>
+                    <div class="indicator" data-section="4">4</div>
+                    <div class="indicator" data-section="5">5</div>
+                </div>
+            </div>
+
+            <div class="scroll-info">
+                <div class="info-item">
+                    <span class="label">Scroll Position:</span>
+                    <span class="value" id="scrollPosition">0px</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Scroll Percentage:</span>
+                    <span class="value" id="scrollPercent">0%</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Current Section:</span>
+                    <span class="value" id="currentSection">1</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Scroll Direction:</span>
+                    <span class="value" id="scrollDirection">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resize Section -->
+        <section class="tab-content" id="resize">
+            <div class="section-header">
+                <h2>📱 Resize Events</h2>
+                <p>Window size change detection</p>
+            </div>
+
+            <div class="resize-demo">
+                <div class="window-preview">
+                    <div class="browser-window">
+                        <div class="browser-header">
+                            <div class="browser-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                        </div>
+                        <div class="browser-content">
+                            <div class="size-display">
+                                <div class="dimension">
+                                    <span class="number" id="widthValue">800</span>
+                                    <span class="unit">px</span>
+                                </div>
+                                <div class="multiply">×</div>
+                                <div class="dimension">
+                                    <span class="number" id="heightValue">600</span>
+                                    <span class="unit">px</span>
+                                </div>
+                            </div>
+                            <div class="device-type" id="deviceType">Desktop</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resize-controls">
+                    <button class="size-btn" data-size="mobile">📱 Mobile</button>
+                    <button class="size-btn" data-size="tablet">📟 Tablet</button>
+                    <button class="size-btn" data-size="desktop">💻 Desktop</button>
+                    <button class="size-btn" data-size="fullscreen">🖥️ Fullscreen</button>
+                </div>
+            </div>
+
+            <div class="breakpoint-info">
+                <h3>Breakpoint Detection</h3>
+                <div class="breakpoints">
+                    <div class="breakpoint" data-bp="xs">
+                        <span>XS</span>
+                        <span>&lt;576px</span>
+                    </div>
+                    <div class="breakpoint" data-bp="sm">
+                        <span>SM</span>
+                        <span>576px+</span>
+                    </div>
+                    <div class="breakpoint" data-bp="md">
+                        <span>MD</span>
+                        <span>768px+</span>
+                    </div>
+                    <div class="breakpoint" data-bp="lg">
+                        <span>LG</span>
+                        <span>992px+</span>
+                    </div>
+                    <div class="breakpoint" data-bp="xl">
+                        <span>XL</span>
+                        <span>1200px+</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toggle Section -->
+        <section class="tab-content" id="toggle">
+            <div class="section-header">
+                <h2>🔀 Toggle Events</h2>
+                <p>Element visibility state changes</p>
+            </div>
+
+            <div class="toggle-demo">
+                <div class="toggle-controls">
+                    <button class="toggle-btn" id="toggleDetails">
+                        <i class="fas fa-chevron-down"></i>
+                        Toggle Details
+                    </button>
+                    
+                    <button class="toggle-btn" id="toggleAccordion">
+                        <i class="fas fa-plus"></i>
+                        Toggle Accordion
+                    </button>
+
+                    <button class="toggle-btn" id="toggleTheme">
+                        <i class="fas fa-moon"></i>
+                        Toggle Theme
+                    </button>
+                </div>
+
+                <div class="toggle-content">
+                    <!-- Details Element -->
+                    <details class="details-element" id="detailsElement">
+                        <summary>Click to see hidden content</summary>
+                        <div class="details-content">
+                            <p>This content is shown/hidden using the <code>&lt;details&gt;</code> element.</p>
+                            <p>The <strong>toggle event</strong> fires when this state changes.</p>
+                        </div>
+                    </details>
+
+                    <!-- Accordion -->
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>What is toggle event?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>The toggle event fires when the open/closed state of details, dialog, or other toggle-able elements changes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span>When is it useful?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Useful for tracking user interactions with collapsible content, accordions, and modal dialogs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Events Log -->
+        <section class="tab-content" id="events">
+            <div class="section-header">
+                <h2>📊 All Events Monitor</h2>
+                <p>Real-time event tracking</p>
+            </div>
+
+            <div class="events-controls">
+                <button class="control-btn" id="clearEvents">
+                    <i class="fas fa-broom"></i> Clear Events
+                </button>
+                <button class="control-btn" id="pauseEvents">
+                    <i class="fas fa-pause"></i> Pause Logging
+                </button>
+                <div class="event-count">
+                    Events: <span id="eventCount">0</span>
+                </div>
+            </div>
+
+            <div class="events-log">
+                <div class="events-container" id="eventsContainer">
+                    <div class="event-entry system">
+                        <span class="event-time">[00:00:00]</span>
+                        <span class="event-type">SYSTEM</span>
+                        <span class="event-message">Event monitor started</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="Load,Unoad,Toggle,resize,Scroll event 4 of DOM.js"></script>
+</body>
+</html>
