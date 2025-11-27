@@ -34,3 +34,20 @@ heading6.appendChild(text);
 firstDiv.insertBefore(heading6, heading3);
 // firstDiv.insertAfter(heading6, heading3);
   
+/*
+Create Html elements
+  document.createElement()
+  document.createTextNode()
+
+Add html elements
+  appendChild()  
+
+Create an Html element with insertBefore(before,after)
+Create an Html element with insertAfter(before,after) 
+
+Remove Html elemnts
+  removeChild()  
+
+Replace Html elements
+  replaceChild(newChild,oldChild) 
+*/
