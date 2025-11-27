@@ -1,7 +1,7 @@
 let images = [
-  "./images/flower-1.jpg",
-  "./images/flower-2.jpg",
-  "./images/flower-3.jpg",
+  "flower-1.jpg",
+  "flower-2.jpg",
+  "flower-3.jpg",
 ];
 let prev = document.getElementById("prev");
 let next = document.getElementById("next");
