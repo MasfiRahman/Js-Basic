@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Audio Player</title>
+    <link rel="stylesheet" href="How to Play an audio in Js of DOM.css">
+</head>
+<body>
+    <div class="audio-player">
+        <div class="player-header">
+            <h2>Now Playing</h2>
+            <div class="song-info">
+                <div class="song-title">Beautiful Day</div>
+                <div class="artist">Unknown Artist</div>
+            </div>
+        </div>
+        
+        <div class="player-controls">
+            <button class="control-btn" id="prevBtn">
+                <span>⏮</span>
+            </button>
+            
+            <button class="control-btn play-pause" id="playPauseBtn">
+                <span id="playIcon">▶</span>
+            </button>
+            
+            <button class="control-btn" id="nextBtn">
+                <span>⏭</span>
+            </button>
+        </div>
+        
+        <div class="progress-container">
+            <span id="currentTime">0:00</span>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <span id="duration">0:00</span>
+        </div>
+        
+        <div class="volume-control">
+            <span>🔊</span>
+            <input type="range" id="volumeSlider" min="0" max="100" value="50">
+        </div>
+        
+        <audio id="audioElement">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script src="How to Play an audio in Js of DOM.js"></script>
+</body>
+</html>
