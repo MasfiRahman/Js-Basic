@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Events Master</title>
+    <link rel="stylesheet" href="Media event 3 of DOM.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎵 Media Events Demo</h1>
+            <p>Explore Audio & Video Events in Real-time</p>
+        </header>
+
+        <div class="media-container">
+            <!-- Audio Player Section -->
+            <div class="media-section">
+                <h2>🎵 Audio Player</h2>
+                <div class="player audio-player">
+                    <audio id="audioElement" controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    
+                    <div class="custom-controls">
+                        <button class="control-btn" id="audioPlayPause">
+                            <i class="fas fa-play" id="audioIcon"></i>
+                        </button>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="audioProgressBar">
+                                <div class="progress" id="audioProgress"></div>
+                            </div>
+                        </div>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" id="audioVolume" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Player Section -->
+            <div class="media-section">
+                <h2>🎥 Video Player</h2>
+                <div class="player video-player">
+                    <video id="videoElement" controls>
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                    
+                    <div class="custom-controls">
+                        <button class="control-btn" id="videoPlayPause">
+                            <i class="fas fa-play" id="videoIcon"></i>
+                        </button>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="videoProgressBar">
+                                <div class="progress" id="videoProgress"></div>
+                            </div>
+                        </div>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" id="videoVolume" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Display Section -->
+        <div class="events-section">
+            <h2>📊 Media Events Monitor</h2>
+            
+            <div class="events-tabs">
+                <button class="tab-btn active" data-tab="all">All Events</button>
+                <button class="tab-btn" data-tab="audio">Audio Events</button>
+                <button class="tab-btn" data-tab="video">Video Events</button>
+                <button class="tab-btn" data-tab="playback">Playback Events</button>
+            </div>
+
+            <div class="events-log">
+                <div class="events-container" id="eventsLog">
+                    <!-- Events will be added here dynamically -->
+                    <div class="event-entry system">
+                        <span class="event-time">[00:00:00]</span>
+                        <span class="event-type">SYSTEM</span>
+                        <span class="event-message">Media events monitor started</span>
+                    </div>
+                </div>
+                
+                <div class="events-controls">
+                    <button class="action-btn" id="clearEvents">
+                        <i class="fas fa-broom"></i> Clear Events
+                    </button>
+                    <button class="action-btn" id="pauseLog">
+                        <i class="fas fa-pause"></i> Pause Log
+                    </button>
+                    <span class="event-count">Events: <span id="eventCount">1</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details Panel -->
+        <div class="details-section">
+            <h2>🔍 Event Object Details</h2>
+            <div class="details-panel" id="eventDetails">
+                <div class="detail-placeholder">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <p>Click on any event to see detailed information</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Media event 3 of DOM.js"></script>
+</body>
+</html>
