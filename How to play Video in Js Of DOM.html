@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Video Player of Masfi Rahman</title>
+    <link rel="stylesheet" href="How to play Video in Js Of DOM.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="video-container">
+        <div class="video-player">
+            <video id="videoElement" class="video">
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <div class="video-controls" id="videoControls">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-buffer" id="progressBuffer"></div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="controls-bottom">
+                    <div class="left-controls">
+                        <button class="control-btn" id="playPauseBtn">
+                            <i class="fas fa-play" id="playIcon"></i>
+                        </button>
+                        
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span> / 
+                            <span id="duration">0:00</span>
+                        </div>
+
+                        <button class="control-btn volume-btn" id="volumeBtn">
+                            <i class="fas fa-volume-up" id="volumeIcon"></i>
+                        </button>
+
+                        <div class="volume-slider-container" id="volumeContainer">
+                            <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+                        </div>
+                    </div>
+
+                    <div class="right-controls">
+                        <button class="control-btn" id="playbackSpeedBtn">
+                            <span id="speedText">1x</span>
+                        </button>
+
+                        <button class="control-btn" id="pipBtn">
+                            <i class="fas fa-compress" id="pipIcon"></i>
+                        </button>
+
+                        <button class="control-btn" id="fullscreenBtn">
+                            <i class="fas fa-expand" id="fullscreenIcon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+
+            <!-- Big Play Button -->
+            <div class="big-play-btn" id="bigPlayBtn">
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+
+        <!-- Video Info -->
+        <div class="video-info">
+            <h1 class="video-title">Big Buck Bunny</h1>
+            <p class="video-description">A large and lovable rabbit deals with three tiny bullies, led by a flying squirrel, who are messing with his zen.</p>
+        </div>
+    </div>
+
+    <script src="How to play Video in Js Of DOM.js"></script>
+</body>
+</html>
