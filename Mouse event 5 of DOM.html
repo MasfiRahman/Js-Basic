@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events Master</title>
+    <link rel="stylesheet" href="Mouse event 5 of DOM.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🐭 Mouse Events Playground</h1>
+            <p>Explore all mouse events with interactive examples</p>
+        </header>
+
+        <!-- Mouse Events Demo Area -->
+        <div class="demo-area">
+            <div class="interactive-zone">
+                <div class="target-box" id="targetBox">
+                    <div class="box-content">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <h3>Interact With Me!</h3>
+                        <p>Try different mouse actions</p>
+                    </div>
+                </div>
+
+                <div class="coordinates-display">
+                    <div class="coord-item">
+                        <span class="coord-label">X Position:</span>
+                        <span class="coord-value" id="mouseX">0</span>
+                    </div>
+                    <div class="coord-item">
+                        <span class="coord-label">Y Position:</span>
+                        <span class="coord-value" id="mouseY">0</span>
+                    </div>
+                    <div class="coord-item">
+                        <span class="coord-label">Buttons:</span>
+                        <span class="coord-value" id="mouseButtons">None</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events Information Panel -->
+            <div class="events-panel">
+                <h2>📋 Mouse Events Information</h2>
+                
+                <div class="events-grid">
+                    <!-- Click Events -->
+                    <div class="event-card" data-event="click">
+                        <div class="event-icon">
+                            <i class="fas fa-mouse"></i>
+                        </div>
+                        <h3>onclick</h3>
+                        <p>Single click on element</p>
+                        <div class="event-counter">
+                            Count: <span id="clickCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-event="dblclick">
+                        <div class="event-icon">
+                            <i class="fas fa-mouse"></i>
+                            <i class="fas fa-mouse"></i>
+                        </div>
+                        <h3>ondblclick</h3>
+                        <p>Double click on element</p>
+                        <div class="event-counter">
+                            Count: <span id="dblclickCount">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Mouse Button Events -->
+                    <div class="event-card" data-event="mousedown">
+                        <div class="event-icon">
+                            <i class="fas fa-hand-pointer"></i>
+                        </div>
+                        <h3>onmousedown</h3>
+                        <p>Mouse button pressed down</p>
+                        <div class="event-counter">
+                            Count: <span id="mousedownCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-event="mouseup">
+                        <div class="event-icon">
+                            <i class="fas fa-hand-point-up"></i>
+                        </div>
+                        <h3>onmouseup</h3>
+                        <p>Mouse button released</p>
+                        <div class="event-counter">
+                            Count: <span id="mouseupCount">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Mouse Movement Events -->
+                    <div class="event-card" data-event="mousemove">
+                        <div class="event-icon">
+                            <i class="fas fa-arrows-alt"></i>
+                        </div>
+                        <h3>onmousemove</h3>
+                        <p>Mouse moving over element</p>
+                        <div class="event-counter">
+                            Count: <span id="mousemoveCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-event="mouseover">
+                        <div class="event-icon">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <h3>onmouseover</h3>
+                        <p>Mouse enters element</p>
+                        <div class="event-counter">
+                            Count: <span id="mouseoverCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-event="mouseenter">
+                        <div class="event-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h3>onmouseenter</h3>
+                        <p>Mouse enters element (bubbles)</p>
+                        <div class="event-counter">
+                            Count: <span id="mouseenterCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-event="mouseleave">
+                        <div class="event-icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <h3>onmouseleave</h3>
+                        <p>Mouse leaves element</p>
+                        <div class="event-counter">
+                            Count: <span id="mouseleaveCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details & Log -->
+        <div class="details-section">
+            <div class="event-details">
+                <h2>🔍 Event Object Details</h2>
+                <div class="details-content" id="eventDetails">
+                    <div class="detail-placeholder">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Perform mouse actions to see event details</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-log">
+                <div class="log-header">
+                    <h2>📊 Event Log</h2>
+                    <div class="log-controls">
+                        <button class="control-btn" id="clearLog">
+                            <i class="fas fa-broom"></i> Clear
+                        </button>
+                        <button class="control-btn" id="pauseLog">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                    </div>
+                </div>
+                <div class="log-container" id="eventLog">
+                    <div class="log-entry system">
+                        <span class="log-time">[00:00:00]</span>
+                        <span class="log-event">SYSTEM</span>
+                        <span class="log-message">Mouse events monitor started</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>🎯 Try These Actions:</h3>
+            <div class="instruction-list">
+                <div class="instruction-item">
+                    <i class="fas fa-mouse"></i>
+                    <span>Single click on the box</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-mouse"></i>
+                    <i class="fas fa-mouse"></i>
+                    <span>Double click quickly</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>Press and hold mouse button</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-arrows-alt"></i>
+                    <span>Move mouse around the box</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Move mouse in/out of the box</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Mouse event 5 of DOM.js"></script>
+</body>
+</html>
