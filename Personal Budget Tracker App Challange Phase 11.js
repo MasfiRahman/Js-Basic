@@ -9,7 +9,7 @@
 */
 
 const budgetResultElement = document.getElementById('budgetResult');
-const clearBudgetElement = document.getElementById('clearBudget');
+const clearBudgetElement = document.getElementById('Claer Budget');
 const startBudgetElement = document.getElementById('startBudget');
 const calculateBudgetElement = document.getElementById('calculateBudget');
 const numberOfExpensesElement = document.getElementById('numExpenses');
@@ -17,7 +17,7 @@ const userNameElement = document.getElementById('userName');
 const incomeElement = document.getElementById('income');
 const expenseInputsDiv = document.getElementById('expenseInputs');
 
-// Attach all event listensers
+// Attach all event listensers of changes are commited
 startBudgetElement.addEventListener('click', getExpenses);
 calculateBudgetElement.addEventListener('click', startCalculateBudget);
 clearBudgetElement.addEventListener('click', clearBudget);
