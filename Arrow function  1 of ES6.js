@@ -40,31 +40,3 @@ function add1(x,y){
 const add2 = (x,y) => x+y;
 console.log(add1(10,20))
 console.log(add2(20,30))
-
-
-
-
-// Arrow function with map and filter
-var students = [
-    {
-        id : 101,
-        name : 'l',
-        gpa : 3.92
-    },
-    {
-        id : 102,
-        name : 'b ',
-        gpa : 3.12
-    },
-    {
-        id : 103,
-        name : 'R',
-        gpa : 2.92
-    },
-    {
-        id : 104,
-        name : 'L',
-        gpa : 4.92
-    },
-]
-console.log(students);
