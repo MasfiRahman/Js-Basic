@@ -1,138 +1,189 @@
 // Canvas setup
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Canvas size set kora
-        canvas.width = 800;
-        canvas.height = 500;
-        
-        // Background color set kora JavaScript diye
-        canvas.style.backgroundColor = '#1a1a2e';
-        canvas.style.display = 'block';
-        canvas.style.margin = '20px auto';
-        canvas.style.borderRadius = '10px';
-        canvas.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.5)';
-        
-        // Draw functions
-        function draw() {
-            // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw a gradient background
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, '#16213e');
-            gradient.addColorStop(1, '#0f3460');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw a sun
-            ctx.beginPath();
-            ctx.arc(700, 80, 40, 0, Math.PI * 2);
-            const sunGradient = ctx.createRadialGradient(700, 80, 0, 700, 80, 40);
-            sunGradient.addColorStop(0, '#ffff00');
-            sunGradient.addColorStop(1, '#ff9900');
-            ctx.fillStyle = sunGradient;
-            ctx.fill();
-            
-            // Draw mountains
-            ctx.beginPath();
-            ctx.moveTo(0, 400);
-            ctx.lineTo(150, 250);
-            ctx.lineTo(300, 350);
-            ctx.lineTo(450, 200);
-            ctx.lineTo(600, 300);
-            ctx.lineTo(800, 150);
-            ctx.lineTo(800, 500);
-            ctx.lineTo(0, 500);
-            ctx.closePath();
-            ctx.fillStyle = '#2d545e';
-            ctx.fill();
-            
-            // Draw a river
-            ctx.beginPath();
-            ctx.moveTo(0, 450);
-            ctx.bezierCurveTo(200, 430, 400, 470, 800, 420);
-            ctx.lineTo(800, 500);
-            ctx.lineTo(0, 500);
-            ctx.closePath();
-            ctx.fillStyle = '#4e89ae';
-            ctx.fill();
-            
-            // Draw trees
-            drawTree(100, 380, 30, 80, '#8b4513', '#2e8b57');
-            drawTree(250, 420, 25, 60, '#8b4513', '#3cb371');
-            drawTree(500, 350, 35, 90, '#8b4513', '#228b22');
-            
-            // Draw a house
-            drawHouse(350, 300, 120, 100);
-            
-            // Draw clouds
-            drawCloud(150, 100, 80);
-            drawCloud(400, 70, 100);
-            drawCloud(600, 120, 70);
-            
-            // Draw text
-            ctx.font = '24px Arial';
-            ctx.fillStyle = '#ffffff';
-            ctx.textAlign = 'center';
-            ctx.fillText('Canvas Graphics with JavaScript Only', canvas.width/2, 40);
-            
-            ctx.font = '16px Arial';
-            ctx.fillText('No CSS used - all styling done with JavaScript', canvas.width/2, 70);
-        }
-        
-        function drawTree(x, y, trunkWidth, trunkHeight, trunkColor, leavesColor) {
-            // Draw trunk
-            ctx.fillStyle = trunkColor;
-            ctx.fillRect(x - trunkWidth/2, y - trunkHeight, trunkWidth, trunkHeight);
-            
-            // Draw leaves
-            ctx.beginPath();
-            ctx.arc(x, y - trunkHeight - 40, 50, 0, Math.PI * 2);
-            ctx.fillStyle = leavesColor;
-            ctx.fill();
-        }
-        
-        function drawHouse(x, y, width, height) {
-            // Draw main house
-            ctx.fillStyle = '#ffb366';
-            ctx.fillRect(x, y, width, height);
-            
-            // Draw roof
-            ctx.beginPath();
-            ctx.moveTo(x - 10, y);
-            ctx.lineTo(x + width/2, y - 50);
-            ctx.lineTo(x + width + 10, y);
-            ctx.closePath();
-            ctx.fillStyle = '#8b0000';
-            ctx.fill();
-            
-            // Draw door
-            ctx.fillStyle = '#654321';
-            ctx.fillRect(x + width/2 - 15, y + height - 70, 30, 70);
-            
-            // Draw windows
-            ctx.fillStyle = '#87ceeb';
-            ctx.fillRect(x + 20, y + 30, 25, 25);
-            ctx.fillRect(x + width - 45, y + 30, 25, 25);
-        }
-        
-        function drawCloud(x, y, size) {
-            ctx.beginPath();
-            ctx.arc(x, y, size/2, 0, Math.PI * 2);
-            ctx.arc(x + size/2, y - size/4, size/2.5, 0, Math.PI * 2);
-            ctx.arc(x + size, y, size/2, 0, Math.PI * 2);
-            ctx.arc(x + size/2, y + size/4, size/3, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            ctx.fill();
-        }
-        
-        // Animation function
-        function animate() {
-            draw();
-            requestAnimationFrame(animate);
-        }
-        
-        // Start animation
-        animate();
- 
+const canvas = document.getElementById('faceCanvas');
+const ctx = canvas.getContext('2d');
+
+// Canvas size and style
+canvas.width = 800;
+canvas.height = 600;
+canvas.style.display = 'block';
+canvas.style.margin = '20px auto';
+canvas.style.border = '2px solid #333';
+canvas.style.borderRadius = '10px';
+canvas.style.backgroundColor = '#87CEEB';
+canvas.style.cursor = 'none';
+
+// Face position and properties
+const face = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    radius: 200,
+    eyeRadius: 30,
+    pupilRadius: 12,
+    eyeOffsetX: 80,
+    eyeOffsetY: 60,
+    mouseX: canvas.width / 2,
+    mouseY: canvas.height / 2
+};
+
+// Mouse move event listener
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    face.mouseX = event.clientX - rect.left;
+    face.mouseY = event.clientY - rect.top;
+});
+
+// Draw face function
+function drawFace() {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw background
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, '#87CEEB');
+    gradient.addColorStop(1, '#98FB98');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw face circle
+    ctx.beginPath();
+    ctx.arc(face.x, face.y, face.radius, 0, Math.PI * 2);
+    ctx.fillStyle = '#FFEBCD';
+    ctx.fill();
+    ctx.strokeStyle = '#D2B48C';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+    
+    // Calculate eye positions based on cursor
+    const leftEyeX = face.x - face.eyeOffsetX;
+    const leftEyeY = face.y - face.eyeOffsetY;
+    const rightEyeX = face.x + face.eyeOffsetX;
+    const rightEyeY = face.y - face.eyeOffsetY;
+    
+    // Calculate pupil direction
+    const leftPupil = calculatePupilPosition(leftEyeX, leftEyeY);
+    const rightPupil = calculatePupilPosition(rightEyeX, rightEyeY);
+    
+    // Draw left eye
+    drawEye(leftEyeX, leftEyeY, leftPupil.x, leftPupil.y);
+    
+    // Draw right eye
+    drawEye(rightEyeX, rightEyeY, rightPupil.x, rightPupil.y);
+    
+    // Draw nose
+    drawNose();
+    
+    // Draw mouth
+    drawMouth();
+    
+    // Draw eyebrows
+    drawEyebrows();
+    
+    // Draw instructions
+    drawInstructions();
+}
+
+// Calculate pupil position based on cursor
+function calculatePupilPosition(eyeX, eyeY) {
+    const dx = face.mouseX - eyeX;
+    const dy = face.mouseY - eyeY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    
+    // Limit pupil movement within eye
+    const maxDistance = face.eyeRadius - face.pupilRadius - 2;
+    const scale = Math.min(maxDistance / distance, 1);
+    
+    return {
+        x: eyeX + dx * scale,
+        y: eyeY + dy * scale
+    };
+}
+
+// Draw single eye with pupil
+function drawEye(eyeX, eyeY, pupilX, pupilY) {
+    // Draw eye white
+    ctx.beginPath();
+    ctx.arc(eyeX, eyeY, face.eyeRadius, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    
+    // Draw pupil
+    ctx.beginPath();
+    ctx.arc(pupilX, pupilY, face.pupilRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#333';
+    ctx.fill();
+    
+    // Draw eye shine
+    ctx.beginPath();
+    ctx.arc(pupilX - 4, pupilY - 4, 4, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+}
+
+// Draw nose
+function drawNose() {
+    ctx.beginPath();
+    ctx.moveTo(face.x, face.y - 20);
+    ctx.lineTo(face.x - 20, face.y + 40);
+    ctx.lineTo(face.x + 20, face.y + 40);
+    ctx.closePath();
+    ctx.fillStyle = '#F4A460';
+    ctx.fill();
+    ctx.strokeStyle = '#D2691E';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
+// Draw mouth
+function drawMouth() {
+    ctx.beginPath();
+    ctx.arc(face.x, face.y + 80, 60, 0, Math.PI, false);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#E75480';
+    ctx.stroke();
+    
+    // Draw tongue
+    ctx.beginPath();
+    ctx.arc(face.x, face.y + 110, 25, 0, Math.PI, true);
+    ctx.fillStyle = '#FF69B4';
+    ctx.fill();
+}
+
+// Draw eyebrows
+function drawEyebrows() {
+    // Left eyebrow
+    ctx.beginPath();
+    ctx.moveTo(face.x - 120, face.y - 100);
+    ctx.lineTo(face.x - 40, face.y - 90);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = '#8B4513';
+    ctx.stroke();
+    
+    // Right eyebrow
+    ctx.beginPath();
+    ctx.moveTo(face.x + 120, face.y - 100);
+    ctx.lineTo(face.x + 40, face.y - 90);
+    ctx.lineWidth = 8;
+    ctx.strokeStyle = '#8B4513';
+    ctx.stroke();
+}
+
+// Draw instructions
+function drawInstructions() {
+    ctx.font = '18px Arial';
+    ctx.fillStyle = '#333';
+    ctx.textAlign = 'center';
+    ctx.fillText('Move your cursor around - the eyes will follow!', face.x, 50);
+    ctx.fillText('Cursor position: (' + Math.round(face.mouseX) + ', ' + Math.round(face.mouseY) + ')', face.x, 550);
+}
+
+// Animation loop
+function animate() {
+    drawFace();
+    requestAnimationFrame(animate);
+}
+
+// Start animation
+animate();
