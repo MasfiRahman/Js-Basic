@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation Master</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌊 Event Propagation Playground</h1>
+            <p>Understand Event Bubbling & Capturing with Visual Examples</p>
+        </header>
+
+        <!-- Propagation Controls -->
+        <div class="controls-section">
+            <h2>⚙️ Propagation Controls</h2>
+            <div class="control-buttons">
+                <button class="control-btn active" id="bubbleMode">
+                    <i class="fas fa-arrow-up"></i>
+                    Bubbling Phase
+                </button>
+                <button class="control-btn" id="captureMode">
+                    <i class="fas fa-arrow-down"></i>
+                    Capturing Phase
+                </button>
+                <button class="control-btn" id="stopPropagation">
+                    <i class="fas fa-ban"></i>
+                    Stop Propagation
+                </button>
+                <button class="control-btn" id="stopImmediate">
+                    <i class="fas fa-hand-paper"></i>
+                    Stop Immediate
+                </button>
+            </div>
+            
+            <div class="propagation-info">
+                <div class="info-item">
+                    <span class="label">Current Phase:</span>
+                    <span class="value" id="currentPhase">Bubbling</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Events Blocked:</span>
+                    <span class="value" id="eventsBlocked">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive DOM Tree -->
+        <div class="dom-tree-section">
+            <h2>🌳 DOM Event Tree</h2>
+            <p>Click on any element to see event propagation</p>
+            
+            <div class="dom-tree">
+                <!-- Level 1: Document -->
+                <div class="tree-level">
+                    <div class="element document" data-level="1" data-id="document">
+                        <i class="fas fa-globe"></i>
+                        <span>document</span>
+                    </div>
+                </div>
+
+                <!-- Level 2: Body -->
+                <div class="tree-level">
+                    <div class="connector"></div>
+                    <div class="element body" data-level="2" data-id="body">
+                        <i class="fas fa-square"></i>
+                        <span>body</span>
+                    </div>
+                </div>
+
+                <!-- Level 3: Container -->
+                <div class="tree-level">
+                    <div class="connector"></div>
+                    <div class="element container-el" data-level="3" data-id="container">
+                        <i class="fas fa-cube"></i>
+                        <span>div.container</span>
+                    </div>
+                </div>
+
+                <!-- Level 4: Main Content -->
+                <div class="tree-level">
+                    <div class="connector"></div>
+                    <div class="element main" data-level="4" data-id="main">
+                        <i class="fas fa-layer-group"></i>
+                        <span>div.main</span>
+                    </div>
+                </div>
+
+                <!-- Level 5: Nested Elements -->
+                <div class="tree-level">
+                    <div class="connector"></div>
+                    <div class="element-group">
+                        <div class="element parent" data-level="5" data-id="parent">
+                            <i class="fas fa-folder"></i>
+                            <span>div.parent</span>
+                        </div>
+                        <div class="element child" data-level="6" data-id="child">
+                            <i class="fas fa-file"></i>
+                            <span>div.child</span>
+                        </div>
+                        <div class="element grandchild" data-level="7" data-id="grandchild">
+                            <i class="fas fa-star"></i>
+                            <span>div.grandchild</span>
+                            <div class="click-me">Click Me!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Flow Visualization -->
+        <div class="flow-section">
+            <h2>📊 Event Flow Visualization</h2>
+            <div class="flow-diagram">
+                <div class="flow-phase capture-phase">
+                    <h3>Capturing Phase (1)</h3>
+                    <div class="flow-path">
+                        <div class="flow-step" data-level="1">document</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="2">body</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="3">container</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="4">main</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="5">parent</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="6">child</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step" data-level="7">grandchild</div>
+                    </div>
+                </div>
+
+                <div class="flow-center">
+                    <div class="target-phase">
+                        <h3>Target Phase (2)</h3>
+                        <div class="target-element">🎯 grandchild</div>
+                    </div>
+                </div>
+
+                <div class="flow-phase bubble-phase">
+                    <h3>Bubbling Phase (3)</h3>
+                    <div class="flow-path">
+                        <div class="flow-step" data-level="7">grandchild</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="6">child</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="5">parent</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="4">main</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="3">container</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="2">body</div>
+                        <div class="flow-arrow">↑</div>
+                        <div class="flow-step" data-level="1">document</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details & Log -->
+        <div class="details-section">
+            <div class="event-details">
+                <h2>🔍 Event Object Details</h2>
+                <div class="details-content" id="eventDetails">
+                    <div class="detail-placeholder">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Click on any DOM element to see event details</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-log">
+                <div class="log-header">
+                    <h2>📋 Event Propagation Log</h2>
+                    <div class="log-controls">
+                        <button class="control-btn" id="clearLog">
+                            <i class="fas fa-broom"></i> Clear
+                        </button>
+                        <button class="control-btn" id="pauseLog">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <div class="event-count">
+                            Events: <span id="eventCount">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="log-container" id="eventLog">
+                    <div class="log-entry system">
+                        <span class="log-time">[00:00:00]</span>
+                        <span class="log-event">SYSTEM</span>
+                        <span class="log-message">Event propagation monitor started</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>🎯 Learning Objectives:</h3>
+            <div class="instruction-list">
+                <div class="instruction-item">
+                    <i class="fas fa-arrow-up"></i>
+                    <div>
+                        <strong>Bubbling Phase</strong>
+                        <span>Events bubble up from target to document</span>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-arrow-down"></i>
+                    <div>
+                        <strong>Capturing Phase</strong>
+                        <span>Events capture down from document to target</span>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-ban"></i>
+                    <div>
+                        <strong>Stop Propagation</strong>
+                        <span>Prevents event from reaching other elements</span>
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-hand-paper"></i>
+                    <div>
+                        <strong>Stop Immediate</strong>
+                        <span>Prevents other listeners on same element</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Event Propagation.js"></script>
+</body>
+</html>
