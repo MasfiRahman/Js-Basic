@@ -37,8 +37,8 @@ let chars = ['A', 'B', ...'anisul', 'z'];
 
 
 // spread operator and object concatenation
-let personInfo1 = { name: 'Anisul Islam', age: 30 };
-let personInfo2 = { id: '101', nationality: "bd" };
+let personInfo1 = { name: 'Masfi', age: 23 };
+let personInfo2 = { id: '23101182', nationality: "bd" };
 
 let p1 = { ...personInfo1 };
 // console.log(p1)
