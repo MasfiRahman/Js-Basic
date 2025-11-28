@@ -32,7 +32,7 @@ let copyArray = [...totalNumbers]
 // console.log(`copyArray = ${copyArray}`)
 
 // string and spread operator
-let chars = ['A', 'B', ...'anisul', 'z'];
+let chars = ['A', 'B', ...'masfi', 'z'];
 // console.log(`${chars}`)
 
 
