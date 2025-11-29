@@ -19,10 +19,7 @@
     <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=flat">
   </div>
 
-  
-
   <hr style="width: 70%; border: 1px solid #ddd; margin: 30px auto;">
-
 
   <!-- OVERVIEW -->
   <h2 style="font-weight: 700;">📌 Overview</h2>
@@ -49,7 +46,6 @@
     <li>Structured exactly how professional devs prefer.</li>
   </ul>
 
-
   <!-- CORE TOPICS -->
   <h2 style="font-weight: 700; margin-top: 40px;">🟦 2. Core JavaScript Topics</h2>
   <p style="font-size: 15px; max-width: 720px; line-height: 1.7; margin: 0 auto;">
@@ -73,7 +69,6 @@
     <li>Organized in a progressive learning flow.</li>
   </ul>
 
-
   <!-- DSA SECTION -->
   <h2 style="font-weight: 700; margin-top: 35px;">🧠 3. Data Structures & Algorithms (DSA)</h2>
   <p style="font-size: 15px; max-width: 700px; margin: 0 auto; line-height: 1.7;">
@@ -86,7 +81,6 @@
     <li><strong>Loops & Patterns</strong> – Number patterns, shape printing, logic drills.</li>
     <li><strong>Basic Algorithms</strong> – Simple computations, math-driven tasks.</li>
   </ul>
-
 
   <!-- PROJECT SECTION -->
   <h2 style="font-weight: 700; margin-top: 40px;">🟩 4. Mini Projects (Real Practical Work)</h2>
@@ -119,17 +113,50 @@ small-projects/
     <li>Foundation ready for React, Node.js, and modern frameworks.</li>
   </ul>
 
-
   <!-- HOW TO RUN -->
-  <h2 style="font-weight: 700; margin-top: 40px;">🚀 How to Run</h2>
-  <ol style="text-align: left; max-width: 720px; margin: 0 auto; font-size: 15px; line-height: 1.7;">
-    <li>Clone the repository:</li>
+  <h2 style="font-weight: 700; margin-top: 40px;">🚀 How to Run This Project</h2>
+  <p style="font-size: 15px; max-width: 720px; margin: 0 auto; line-height: 1.7;">
+    Follow these steps to run JavaScript files and test the mini-projects included in this repository.
+  </p>
+
+  <ol style="text-align: left; max-width: 720px; margin: 0 auto; font-size: 15px; line-height: 1.8;">
+    <li><strong>Install Node.js:</strong>  
+      Download and install from <a href="https://nodejs.org/">nodejs.org</a>.  
+      This will also install <code>npm</code> (Node Package Manager) which is required for some projects.</li>
+
+    <li><strong>Clone the repository:</strong></li>
 <pre style="font-size: 14px;">git clone https://github.com/MasfiRahman/Js-Basic</pre>
-    <li>Open the project folder.</li>
-    <li>Open any folder → open <code>.html</code> file → run with Live Server.</li>
-    <li>JS-only files can be tested using Browser Console or Node.js.</li>
+
+    <li><strong>Open the project folder in VS Code or any code editor.</strong></li>
+
+    <li><strong>To run JS files using Node.js:</strong>
+      <ul>
+        <li>Open terminal / command prompt in the folder containing the JS file.</li>
+        <li>Type <code>node filename.js</code> and press Enter.</li>
+        <li>Example: <code>node variables.js</code></li>
+      </ul>
+    </li>
+
+    <li><strong>To test JS code in Browser:</strong>
+      <ul>
+        <li>Open the <code>.html</code> file in a web browser (Chrome, Firefox, Edge).</li>
+        <li>Open browser console (F12 → Console tab) to see JS output.</li>
+      </ul>
+    </li>
+
+    <li><strong>Optional - Using npm for advanced projects:</strong>
+      <ul>
+        <li>Some projects may require additional packages.</li>
+        <li>Install dependencies by running <code>npm install</code> in the project folder.</li>
+        <li>Then run JS files with <code>node filename.js</code> or any npm script defined.</li>
+      </ul>
+    </li>
   </ol>
 
+  <p style="font-size: 14px; color: #555; max-width: 720px; margin: 10px auto; line-height: 1.6;">
+    ✅ Tip: Beginners can start by running JS files in Node.js for console output and browser for DOM-related projects.  
+    This way you can gradually understand how JavaScript works both in backend (Node) and frontend (Browser).
+  </p>
 
   <!-- CONTACT -->
   <h2 style="font-weight: 700; margin-top: 40px;">📬 Contact</h2>
@@ -143,5 +170,3 @@ small-projects/
   <p style="font-size: 13px; color: #777;">© 2025 | JS BASIC • Educational & Open-Source</p>
 
 </div>
-    <p style="font-size: 13px; color: #555;">Keep coding, keep learning! 💻</p>
-  
